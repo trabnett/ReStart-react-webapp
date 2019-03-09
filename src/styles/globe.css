@@ -1,0 +1,101 @@
+/*---Variables---*/
+:root {
+    --frame-color: #444;
+  }
+  /*---Hover Effect---*/
+  .container:hover .globe{
+    background-position:-172px 5px;
+  }
+  .globe{
+    transition: All 1.8s ease-in-out;
+  }
+  /*---Style---*/
+  .container {
+    width:240px;
+    margin:auto;
+      margin-top:calc(5vh - 5px);
+    cursor:pointer;
+  }
+  .container::before{
+    content: "";
+    position: absolute;
+    width: 160px;
+    height: 136px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-top: -68px;
+    margin-left: 92px;
+  }
+  .frame {
+    width:200px;
+    margin:auto;
+    padding:5px;
+    border: solid 5px rgba(255,255,255,0);
+    border-radius:50%;
+    transform:rotate(-45deg);
+  }
+  .frame::after {
+    content:"";
+    position:absolute;
+    border:10px solid var(--frame-color);
+    width:105px;
+    height:220px;
+    margin-top:-220px;
+    margin-left:-20px;
+    border-top-left-radius:220px;
+    border-bottom-left-radius:220px;
+    z-index:-1;
+  }
+  .frame::before {
+    content:"";
+    position:absolute;
+    left:calc(50% - 5px);
+    margin-top:-30px;
+    width:10px;
+    height:264px;
+    border-radius:4px;
+    background-color:var(--frame-color);
+    z-index:-1;
+  }
+  .globe {
+    width:200px;
+    height:200px;
+    margin:auto;
+    background-image: url(../images/restartmap.png);
+    background-color:#A5EAF6;
+    background-size:360px;
+    background-repeat:repeat no-repeat;
+    background-position:16px 10px;
+    border-radius:50%;
+    transform:rotate(45deg);
+    overflow:hidden;
+  }
+  .gloss {
+    width:184px;
+    height:184px;
+    position:absolute;
+    margin-top:-10px;
+    margin-left:-10px;
+    background-color:rgba(255,255,255,.25);
+    border-radius:50%;
+  }
+  .base {
+    width: 76px;
+    height: 36px;
+    margin: auto;
+    margin-top: 10px;
+    background-color: var(--frame-color);
+    border-top-left-radius:50px;
+    border-top-right-radius:50px;
+    border-bottom-right-radius:8px;
+    border-bottom-left-radius:8px;
+  }
+  .base::before{
+    content:"";
+    position:absolute;
+    left:calc(50% - 2.5px);
+    margin-top:-20px;
+    width:10px;
+    height:20px;
+    background-color:var(--frame-color);
+  }
