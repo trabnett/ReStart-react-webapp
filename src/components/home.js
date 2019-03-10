@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import './../styles/home.css';
 import './../styles/globe.css';
 import logoblackrestart from './../images/logoblackrestart.png';
@@ -6,25 +6,11 @@ import cardsnap from "./../images/cardsnap.png";
 import cardcoupon from "./../images/cardcoupon.png";
 import cardrecycle from "./../images/cardrecycle.png"
 import white_logo_restart from "./../images/white_logo_restart.png";
+import Modal from "./modal"
+import Header from "./header"
 
-const Header = () => {
-    return(
-        <div>
-            <header class="header">
-				<nav class="header__nav">
-                    <img src={logoblackrestart} alt="ReStart Logo" class="header__logo"></img>
-                    <a href="" class="btn btn--red btn--animated">Login / Sign Up</a>
-				</nav>
 
-                <div class="header__text-box">
-                    <h1 class="heading-primary">
-                        <span class="heading-primary--main">Recycling Gamified</span>
-                    </h1>
-                </div>
-            </header>
-        </div>
-    );
-}
+
 
 const Section1 = () => {
     return(
@@ -112,18 +98,36 @@ const Footer = () => {
     )
 }
 
-const Home = () => {
-    return(
-        <div>
-            <Header />
-            <Section1 />
-            <Section2 />
-            <Footer />
-        </div>
+class Home extends Component {
+    constructor(props){
+        super(props);
+        this.state={
+        username:'',
+        password:'',
+        show: false
+        }
+       }
 
-        
+    Click = () => {
+        console.log("hey")
+        this.setState({show: !this.state.show})
+    }
 
-    );
+ 
+    render() {
+        return(
+            <div>
+                <Header Click={this.Click}/>
+                <Modal show={this.state.show} />
+                <Section1 />
+                <Section2 />
+                <Footer />
+            </div>
+
+            
+
+        );
+    }
 }
 
 export default Home;

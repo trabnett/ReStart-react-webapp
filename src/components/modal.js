@@ -1,0 +1,88 @@
+import React, { Component } from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
+
+
+class Modal extends Component {
+  constructor(props){
+    super(props);
+    this.state={
+      email:'tim@tim.com',
+      password:'asdf',
+      show: false
+    }
+  }
+  savePassword( event ) {
+    this.setState({
+        password: event.target.value
+    });
+  }
+
+  saveEmail( event ) {
+    this.setState({
+        email: event.target.value
+    });
+  }
+
+  handleFormSubmit( event ) {
+    let data = {
+      email: "tim@tim.com",
+      password: "asdf"
+    }
+    var headers = {
+      Accept: 'application/json',
+      "Content-Type": "application/json"
+   }
+    event.preventDefault();
+    fetch('http://localhost:3000/login', {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify(data)
+    })
+      .then(response => console.log(response.json()))
+
+  }
+  render(){
+    if (!this.props.show) {
+      console.log("hey")
+      return null;
+    }
+    return (
+      <div>
+        <form onSubmit={ this.handleFormSubmit.bind( this ) }>
+          <h3>Please sign in</h3>
+          <input type="email" 
+          placeholder="Type email" 
+          value={ this.state.email } 
+          onChange={ this.saveEmail.bind( this ) }/>
+          <input type="password" 
+          placeholder="Type password" 
+          value={ this.state.password } 
+          onChange={ this.savePassword.bind( this ) }/>
+          
+          <button type="submit"> Submit </button>
+        </form>
+        <form onSubmit={ this.handleFormSubmit.bind( this ) }>
+          <h3>Please sign up </h3>
+          <input type="email" 
+          placeholder="Type email" 
+          value={ this.state.email } 
+          onChange={ this.saveEmail.bind( this ) }/>
+          <input type="password" 
+          placeholder="Type password" 
+          value={ this.state.password } 
+          onChange={ this.savePassword.bind( this ) }/>
+          <input type="password_confirmation" 
+          placeholder="Type password confirmation" 
+          value={ this.state.password } 
+          onChange={ this.savePassword.bind( this ) }/>
+          
+          <button type="submit"> Submit </button>
+        </form>
+      </div>
+    )
+  }
+}
+
+
+export default Modal;
