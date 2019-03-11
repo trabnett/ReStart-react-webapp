@@ -17,7 +17,7 @@ class Header extends Component {
                 <header class="header">
                     <nav class="header__nav">
                         <img src={logoblackrestart} alt="ReStart Logo" class="header__logo"></img>
-                        <a onClick={this.props.Click} class="btn btn--red btn--animated">Login / Sign Up</a>
+                        <Modal />
                     </nav>
 
                     <div class="header__text-box">

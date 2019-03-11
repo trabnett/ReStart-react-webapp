@@ -119,7 +119,6 @@ class Home extends Component {
         return(
             <div>
                 <Header Click={this.Click}/>
-                <Modal show={this.state.show} />
                 <Section1 />
                 <Section2 />
                 <Footer />
