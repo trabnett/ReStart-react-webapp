@@ -9,7 +9,7 @@ class Modal extends Component {
   constructor(props){
     super(props);
     this.state={
-      email:'tim@tim.com',
+      email:'coke@coke.com',
       password:'asdf',
       show: false,
       redirect: false
@@ -42,8 +42,8 @@ class Modal extends Component {
 
   handleFormSubmit( event ) {
     let data = {
-      email: "coke@tim.com",
-      password: "asdf"
+      email: this.state.email,
+      password: this.state.password
     }
     var headers = {
       Accept: 'application/json',
@@ -58,25 +58,26 @@ class Modal extends Component {
     .then(response => response.json())
     .then(data => {
       if (data.alert = "sucessful login") {
+        console.log(data, "you are you")
         this.setState({
           redirect: true,
           brand_name: data.brand_name,
           coupons: data.coupons,
           brand_id: data.session_id,
           brand_email: data.email,
-          password_hash: data.hash
+          brand_logo: data.brand_logo
          })
       console.log(this.state)
 
       }
     } )
-    .catch(error => {
-      this.setState({      
-        email:'tim@tim.com',
-        password:'asdf',
-        show: false,
-        redirect: false})
-      console.log(error)})
+    // .catch(error => {
+    //   this.setState({      
+    //     email:'tim@tim.com',
+    //     password:'asdf',
+    //     show: false,
+    //     redirect: false})
+    //   console.log(error)})
  
 
   }
@@ -86,8 +87,14 @@ class Modal extends Component {
     }
     const { redirect } = this.state;
     if (redirect) {
-      console.log("heyheyhey")
-      return <Redirect to='/brands' />;
+      console.log("heyheyhey", this.state)
+      return <Redirect to={{
+        pathname: '/brands',
+        state: { 
+          brand_name: this.state.brand_name, 
+          logo: this.state.brand_logo
+        }
+      }}/>;
     }
     return (
       <div>
