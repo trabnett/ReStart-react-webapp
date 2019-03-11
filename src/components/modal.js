@@ -1,5 +1,8 @@
-import React from 'react'
-import Popup from 'reactjs-popup'
+import React, { Component } from 'react';
+import Popup from 'reactjs-popup';
+import { BrowserRouter as Router, Switch, Route, Link, Redirect } from "react-router-dom";
+import { createBrowserHistory } from 'history';
+import Brands from "./brands";
 import './../styles/modal.css';
 
 const Modal =  () => (

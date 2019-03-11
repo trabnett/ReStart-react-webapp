@@ -5,7 +5,7 @@ import cardsnap from "./../images/cardsnap.png";
 import cardcoupon from "./../images/cardcoupon.png";
 import cardrecycle from "./../images/cardrecycle.png"
 import white_logo_restart from "./../images/white_logo_restart.png";
-
+import Modal from "./modal"
 
 
 class Header extends Component {
