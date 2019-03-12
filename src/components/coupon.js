@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import Form from "./form"
 
 
 class Coupon extends Component{
@@ -15,17 +15,21 @@ class Coupon extends Component{
 
     render(){
             const coupons = this.props.data.coupons
-        return (
-            <div>
-                <img src={this.props.data.logo} />
+            console.log("hey", this.props.data)
+            if (!this.props.data.coupons){
+                return null
+            }
+               
+            return (
+                 <div>
                 <h1>{this.props.data.brand}</h1>
                 <div>
-                    {coupons.map(function(d, idx){
+                    {this.props.data.coupons.map(function(d, idx){
                         return (
                             <tr>
                                 <td key={idx + 1}>{idx + 1}</td>
                                 <td key={idx + 1}>{d.created_at}</td>
-                                <td key={idx + 1}>{d.code}</td>
+                                <td key={idx + 1}>{d.value}</td>
                                 <td key={idx + 1}>{d.expirary_date}</td>
                                 <td key={idx + 1}><h2>{d.content}</h2></td>
                             </tr>

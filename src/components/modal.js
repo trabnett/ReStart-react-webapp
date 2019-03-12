@@ -58,7 +58,6 @@ class Modal extends Component {
     .then(response => response.json())
     .then(data => {
       if (data.alert = "sucessful login") {
-        console.log(data, "you are you")
         this.setState({
           redirect: true,
           brand_name: data.brand_name,
@@ -92,7 +91,8 @@ class Modal extends Component {
         pathname: '/brands',
         state: { 
           brand_name: this.state.brand_name, 
-          logo: this.state.brand_logo
+          logo: this.state.brand_logo,
+          email: this.state.brand_email
         }
       }}/>;
     }
