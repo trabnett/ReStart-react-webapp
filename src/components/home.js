@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import './../styles/home.css';
 import './../styles/globe.css';
+import './../styles/modal.css';
 import logoblackrestart from './../images/logoblackrestart.png';
 import cardsnap from "./../images/cardsnap.png";
 import cardcoupon from "./../images/cardcoupon.png";
@@ -104,12 +105,10 @@ class Home extends Component {
         this.state={
         username:'',
         password:'',
-        show: false
         }
        }
 
     Click = () => {
-        console.log("hey")
         this.setState({show: !this.state.show})
     }
 
@@ -118,7 +117,6 @@ class Home extends Component {
         return(
             <div>
                 <Header Click={this.Click}/>
-                <Modal show={this.state.show} />
                 <Section1 />
                 <Section2 />
                 <Footer />

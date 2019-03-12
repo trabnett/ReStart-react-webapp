@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import Popup from 'reactjs-popup';
 import { BrowserRouter as Router, Switch, Route, Link, Redirect } from "react-router-dom";
 import { createBrowserHistory } from 'history';
+import './../styles/modal.css';
 import Brands from "./brands";
 
 
@@ -11,16 +13,10 @@ class Modal extends Component {
     this.state={
       email:'coke@coke.com',
       password:'asdf',
-      show: false,
       redirect: false
     }
   }
 
-  // const location = history.location;
-  // const unlisten = history.listen((location, action) => {
-  //   // location is an object like window.location
-  //   console.log(action, location.pathname, location.state);
-  // });
   
   savePassword( event ) {
     this.setState({
@@ -79,9 +75,6 @@ class Modal extends Component {
 
   }
   render(){
-    if (!this.props.show) {
-      return null;
-    }
     const { redirect } = this.state;
     if (redirect) {
       console.log("heyheyhey", this.state)
@@ -95,41 +88,61 @@ class Modal extends Component {
       }}/>;
     }
     return (
-      <div>
-        <form onSubmit={ this.handleFormSubmit.bind( this ) }>
-          <h3>Please sign in</h3>
-          <input type="email" 
-          placeholder="Type email" 
-          value={ this.state.email } 
-          onChange={ this.saveEmail.bind( this ) }/>
-          <input type="password" 
-          placeholder="Type password" 
-          value={ this.state.password } 
-          onChange={ this.savePassword.bind( this ) }/>
-          
-          <button type="submit"> Submit </button>
-        </form>
-        <form onSubmit={ this.handleFormSubmit.bind( this ) }>
-          <h3>Please sign up </h3>
-          <input type="email" 
-          placeholder="Type email" 
-          value={ this.state.email } 
-          onChange={ this.saveEmail.bind( this ) }/>
-          <input type="password" 
-          placeholder="Type password" 
-          value={ this.state.password } 
-          onChange={ this.savePassword.bind( this ) }/>
-          <input type="password_confirmation" 
-          placeholder="Type password confirmation" 
-          value={ this.state.password } 
-          onChange={ this.savePasswordConfirmation.bind( this ) }/>
-          
-          <button type="submit"> Submit </button>
-        </form>
-      </div>
-    )
-  }
-}
+      <Popup trigger={<button class="btn btn--red btn--animated"> Login / Sign Up</button>} modal>
+        {close => (
+          <div className="modal">
+            <a className="close" onClick={close}>
+              &times;
+            </a>
+            <div className="popupname"> Log In or Sign Up </div>
+            <div className="content">
+              {' '}
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, a nostrum.
+              Dolorem, repellat quidem ut, minima sint vel eveniet quibusdam voluptates
+              delectus doloremque, explicabo tempore dicta adipisci fugit amet dignissimos?
+            </div>
+            <div>
+            <form onSubmit={ this.handleFormSubmit.bind( this ) }>
+              <h3>Please sign in</h3>
+              <input type="email" 
+              placeholder="Type email" 
+              value={ this.state.email } 
+              onChange={ this.saveEmail.bind( this ) }/>
+              <input type="password" 
+              placeholder="Type password" 
+              value={ this.state.password } 
+              onChange={ this.savePassword.bind( this ) }/>
+              
+              <button type="submit"> Submit </button>
+            </form>
+            <form onSubmit={ this.handleFormSubmit.bind( this ) }>
+              <h3>Please sign up </h3>
+              <input type="email" 
+              placeholder="Type email" 
+              value={ this.state.email } 
+              onChange={ this.saveEmail.bind( this ) }/>
+              <input type="password" 
+              placeholder="Type password" 
+              value={ this.state.password } 
+              onChange={ this.savePassword.bind( this ) }/>
+              <input type="password_confirmation" 
+              placeholder="Type password confirmation" 
+              value={ this.state.password } 
+              onChange={ this.savePasswordConfirmation.bind( this ) }/>
+              
+              <button type="submit"> Submit </button>
+            </form>
+          </div>
+            <div>
+              <p> Forgot Password </p>
+              <p> Looking to join or partner </p>	
+            </div>
+          </div>
+        )}
+      </Popup>
+        )}
+    }
+    
 
 
 export default Modal;

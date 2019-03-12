@@ -5,6 +5,7 @@ import cardsnap from "./../images/cardsnap.png";
 import cardcoupon from "./../images/cardcoupon.png";
 import cardrecycle from "./../images/cardrecycle.png"
 import white_logo_restart from "./../images/white_logo_restart.png";
+import Modal from "./modal"
 
 
 
@@ -17,7 +18,7 @@ class Header extends Component {
                 <header class="header">
                     <nav class="header__nav">
                         <img src={logoblackrestart} alt="ReStart Logo" class="header__logo"></img>
-                        <a onClick={this.props.Click} class="btn btn--red btn--animated">Login / Sign Up</a>
+                        <Modal />
                     </nav>
 
                     <div class="header__text-box">
