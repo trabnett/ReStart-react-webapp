@@ -1,17 +1,7 @@
 import React, { Component } from "react";
 import DropdownDate from 'react-dropdown-date';
 
-const formatDate = (date) => {	// formats a JS date to 'yyyy-mm-dd'
-    var d = new Date(date),
-        month = '' + (d.getMonth() + 1),
-        day = '' + d.getDate(),
-        year = d.getFullYear();
 
-    if (month.length < 2) month = '0' + month;
-    if (day.length < 2) day = '0' + day;
-
-    return [year, month, day].join('-');
-}
 class ReactFormLabel extends React.Component {
   constructor(props) {
    super(props)
@@ -29,75 +19,50 @@ class ReactFormLabel extends React.Component {
    super(props)
  
    this.state = {
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
+    expiry_date: null,
+    coupon_value: ''
    }
  
-   this.handleChange = this.handleChange.bind(this)
-   this.handleSubmit = this.handleSubmit.bind(this)
   }
  
-  handleChange = (e) => {
-   let newState = {}
- 
-   newState[e.target.name] = e.target.value
- 
-   this.setState(newState)
+  handleCouponValueChange = (e) => {
+    this.setState({coupon_value: e.target.value})
   }
  
  
   handleSubmit = (e, message) => {
    e.preventDefault()
- 
-   let formData = {
-    formSender: this.state.name,
-    formEmail: this.state.email,
-    formSubject: this.state.subject,
-    formMessage: this.state.message
-   }
- 
-   if (formData.formSender.length < 1 || formData.formEmail.length < 1 || formData.formSubject.length < 1 || formData.formMessage.length < 1) {
-    return false
-   }
+    this.setState({brand_name: this.props.brand_name}, ()=> {
+   console.log(this.state)
+   let data = {
+    email: this.state.email,
+    password: this.state.password
+  }
+  console.log('hello')
+  var headers = {
+    Accept: 'application/json',
+    "Content-Type": "application/json"
+ }
+})
 
-   this.setState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    subject: '',
-    message: ''
-   })
+
   }
  
   render() {
    return(
     <form className='react-form' onSubmit={this.handleSubmit}>
-     <h1>Say Hi!</h1>
+     <h1>Please enter an expiry date and value for your new coupon</h1>
 
      <DropdownDate
                     startDate={                         // optional, if not provided 1900-01-01 is startDate
-                        '2012-01-01'                    // 'yyyy-mm-dd' format only
+                        '2019-01-01'                    // 'yyyy-mm-dd' format only
                     }
                     endDate={                           // optional, if not provided current date is endDate
-                        '2013-12-31'                    // 'yyyy-mm-dd' format only
+                        '2022-12-31'                    // 'yyyy-mm-dd' format only
                     }
-                    selectedDate={                      // optional
-                        this.state.selectedDate         // 'yyyy-mm-dd' format only
-                    }
-                    onMonthChange={(month) => {         // optional
-                        console.log(month);
-                    }}
-                    onDayChange={(day) => {             // optional
-                        console.log(day);
-                    }}
-                    onYearChange={(year) => {           // optional
-                        console.log(year);
-                    }}
+                    
                     onDateChange={(date) => {           // optional
-                        console.log(date);
-                        this.setState({ date: date, selectedDate: formatDate(date) });
+                        this.setState({ expiry_date: date });
                     }}
                     ids={                               // optional
                         {
@@ -147,7 +112,7 @@ class ReactFormLabel extends React.Component {
      <fieldset className='form-group'>
       <ReactFormLabel htmlFor='formEmail' title='Value:' />
  
-      <input id='formEmail' className='form-input' name='email' type='email' required onChange={this.handleChange} value={this.state.email} />
+      <input className='form-input' name='coupon_value' type='number' required onChange={this.handleCouponValueChange} value={this.state.coupon_value} />
      </fieldset>
  
      <div className='form-group'>

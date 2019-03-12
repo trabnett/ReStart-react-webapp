@@ -66,8 +66,6 @@ class Modal extends Component {
           brand_email: data.email,
           brand_logo: data.brand_logo
          })
-      console.log(this.state)
-
       }
     } )
     // .catch(error => {

@@ -18,7 +18,6 @@ class Brands extends Component{
             fetch(`http://localhost:3000/brands/coupons?email=${this.state.email}`)
             .then(response => response.json())
             .then(data => {
-                console.log(data.coupons, "============")
                 this.setState({ coupons: data.coupons })
             });
 
@@ -26,7 +25,6 @@ class Brands extends Component{
     }
 
     render(props){
-        console.log(this.state)
         return (
             <div>
                 <a>{this.state.email}</a>
@@ -35,7 +33,7 @@ class Brands extends Component{
                 <h1>Create New Coupon</h1>
                 <h2>{this.props.location.state.brand_name}</h2>
                  <Coupon data={this.state} />
-                 <Form />
+                 <Form brand_name={this.state.brand_name}/>
             </div>
         )
     
