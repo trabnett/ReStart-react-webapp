@@ -31,16 +31,22 @@ class Brands extends Component{
             <div className="brandheader">
                 <h1>Brand: {this.props.location.state.brand_name}</h1>
 						</div>
-						<div className="content-splithalf">
+						<div className="brandrow">
 							<div className="brandcolumn">
-									<h2>Email: {this.state.email}</h2>
-									<img src ={this.props.location.state.logo} class="brandlogo"/>
-									<Graph/>
+									<h2>Profile:</h2>
+									<h3>Email: {this.state.email}</h3>
+									<h3> Logo: </h3>
+									<img src ={this.props.location.state.logo} class="brandlogo"/>	
+									<h2>Current & Expired Coupons</h2>
+                <h3>{this.props.location.state.brand_name}</h3>
+                 <Coupon data={this.state} />	
 							</div>
 							<div className="brandcolumn">
-                <h2>Current & Expired Coupons</h2>
-                <h3>{this.props.location.state.brand_name}</h3>
-                 <Coupon data={this.state} />
+							<h2>Chart of Coupon Issuance:</h2>
+							<Graph/>
+							</div>
+							<div className="brandcolumn">
+                
                  <Form brand_name={this.state.brand_name}/>	 
             	</div>
 						</div>

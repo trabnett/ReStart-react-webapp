@@ -18,7 +18,7 @@ class Graph extends React.Component {
   render() {
     return (
      <div style={{ display: "flex", flexWrap: "wrap" }}>
-		     <VictoryChart style={{ parent: { maxWidth: "30%" } }}
+		     <VictoryChart style={{ parent: { maxWidth: "90%" } }}
         width={600} height={470} scale={{ x: "time" }}
           containerComponent={
             <VictoryZoomContainer
@@ -47,7 +47,7 @@ class Graph extends React.Component {
             />
 
           </VictoryChart>
-          <VictoryChart style={{ parent: { maxWidth: "30%" } }}
+          <VictoryChart style={{ parent: { maxWidth: "90%" } }}
             padding={{ top: 0, left: 50, right: 50, bottom: 30 }}
             width={600} height={100} scale={{ x: "time" }}
             containerComponent={

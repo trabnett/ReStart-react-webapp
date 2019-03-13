@@ -7,3 +7,11 @@
 	background-color: black;
 	color: white;
 }
+.brandrow {
+  display: flex;
+}
+
+.brandcolumn {
+	flex: 33.3333%;
+	margin: 1em;
+}
