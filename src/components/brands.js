@@ -8,7 +8,7 @@ import Graph from "./usagegraph"
 class Brands extends Component{
     constructor(props) {
         super(props);
-        this.state={}
+				this.state={redirect: false}
     }
 		AddNewCoupon = (newCoupon) => {
 			let array = [
@@ -16,6 +16,11 @@ class Brands extends Component{
 				...this.state.coupons				
 			]
 			this.setState({coupons: array})
+		}
+
+		LogOut = () => {
+			let path = `/`;
+			this.props.history.push(path);
 		}
 
     componentDidMount() {
@@ -36,6 +41,7 @@ class Brands extends Component{
 					<div>
             <div className="brandheader">
                 <h1>Brand: {this.props.location.state.brand_name}</h1>
+								<button onClick={this.LogOut}>Log out</button>
 						</div>
 						<div className="brandrow">
 							<div className="brandcolumn">
