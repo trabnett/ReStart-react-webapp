@@ -97,9 +97,7 @@ class Modal extends Component {
             <div className="popupname"> Log In or Sign Up </div>
             <div className="content">
               {' '}
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, a nostrum.
-              Dolorem, repellat quidem ut, minima sint vel eveniet quibusdam voluptates
-              delectus doloremque, explicabo tempore dicta adipisci fugit amet dignissimos?
+              ReStart offers rewards for recycling with the help of cities, brands and public we can all be planet heros.
             </div>
             <div>
             <form onSubmit={ this.handleFormSubmit.bind( this ) }>
@@ -113,9 +111,13 @@ class Modal extends Component {
               value={ this.state.password } 
               onChange={ this.savePassword.bind( this ) }/>
               
-              <button type="submit"> Submit </button>
+              <button class="btn2 btn2--green btn2--animated" type="submit"> Submit </button>
             </form>
+						<a> Forgot Password </a>
+						<br></br>
+						<br></br>
             <form onSubmit={ this.handleFormSubmit.bind( this ) }>
+				
               <h3>Please sign up </h3>
               <input type="email" 
               placeholder="Type email" 
@@ -130,12 +132,13 @@ class Modal extends Component {
               value={ this.state.password } 
               onChange={ this.savePasswordConfirmation.bind( this ) }/>
               
-              <button type="submit"> Submit </button>
+              <button class="btn2 btn2--green btn2--animated" type="submit"> Submit </button>
             </form>
           </div>
             <div>
-              <p> Forgot Password </p>
-              <p> Looking to join or partner </p>	
+              <a> Looking to join or partner </a>	
+							<br></br>
+							<br></br>
             </div>
           </div>
         )}
