@@ -46,7 +46,7 @@ class Modal extends Component {
       "Content-Type": "application/json"
    }
     event.preventDefault();
-    fetch('http://192.168.1.107:3000/brands/login', {
+    fetch('http://172.46.1.207:3000/brands/login', {
       method: 'POST',
       headers: headers,
       body: JSON.stringify(data)
@@ -111,7 +111,7 @@ class Modal extends Component {
               value={ this.state.password } 
               onChange={ this.savePassword.bind( this ) }/>
               
-              <button class="btn2 btn2--green btn2--animated" type="submit"> Submit </button>
+              <button className="btn2 btn2--green btn2--animated" type="submit"> Submit </button>
             </form>
 						<a> Forgot Password </a>
 						<br></br>
@@ -132,7 +132,7 @@ class Modal extends Component {
               value={ this.state.password } 
               onChange={ this.savePasswordConfirmation.bind( this ) }/>
               
-              <button class="btn2 btn2--green btn2--animated" type="submit"> Submit </button>
+              <button className="btn2 btn2--green btn2--animated" type="submit"> Submit </button>
             </form>
           </div>
             <div>

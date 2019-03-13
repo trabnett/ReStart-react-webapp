@@ -1,3 +1,4 @@
+/* this is the form component to make new coupons*/
 import React, { Component } from "react";
 import DropdownDate from 'react-dropdown-date';
 

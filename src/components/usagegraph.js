@@ -30,7 +30,7 @@ class Graph extends React.Component {
         >
             <VictoryLine
               style={{
-                data: { stroke: "tomato" }
+                data: { stroke: "#01A388" }
               }}
               data={[
                 { a: new Date(1982, 1, 1), b: 125 },
@@ -63,7 +63,7 @@ class Graph extends React.Component {
             />
             <VictoryLine
               style={{
-                data: { stroke: "tomato" }
+                data: { stroke: "#01A388" }
               }}
               data={[
                 { key: new Date(1982, 1, 1), b: 125 },
