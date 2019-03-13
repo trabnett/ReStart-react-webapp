@@ -36,9 +36,9 @@ class ReactFormLabel extends React.Component {
     let code = Math.floor(Math.random()*90000) + 10000;
     this.setState({
       brand_name: this.props.brand_name,
-      code: code
+      code: code,
+      counter: 0
     }, ()=> {
-   console.log(this.state)
    let data = {...this.state}
   console.log(data)
   var headers = {
@@ -52,7 +52,8 @@ class ReactFormLabel extends React.Component {
     })
     .then(response => response.json())
     .then(data => {
-      console.log(data)
+    this.props.Counter()
+      console.log(this.props, "<=======")
     } )
 })
 

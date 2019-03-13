@@ -19,7 +19,7 @@ class Coupon extends Component{
             if (!this.props.data.coupons){
                 return null
             }
-               
+            console.log("helooooooo", this.props.data)
             return (
               <div>
                 <h1>{this.props.data.brand}</h1>
@@ -27,9 +27,9 @@ class Coupon extends Component{
                     return (
                       <tr key={idx + 1}>
                           <td>{idx + 1}</td>
-                          <td>{d.created_at}</td>
+                          <td>=={d.created_at.slice(0,-14)}==</td>
                           <td>{d.value}</td>
-                          <td>{d.expirary_date}</td>
+                          <td>{d.expiary_date}</td>
                           <td><h2>{d.content}</h2></td>
                       </tr>
                   )})}

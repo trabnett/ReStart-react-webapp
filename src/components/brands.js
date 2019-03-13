@@ -7,10 +7,13 @@ import Form from "./form"
 class Brands extends Component{
     constructor(props) {
         super(props);
-        this.state={}
+        this.state={counter: 0}
     }
 
-
+    Counter = () => {
+        let check = this.state.counter + 1
+        this.setState({counter: check})
+    }
     componentDidMount() {
         const payload = this.props.location.state
         this.setState({...payload}, () => {
@@ -26,6 +29,7 @@ class Brands extends Component{
     }
 
     render(props){
+        console.log(this.state.counter)
         return (
             <div>
                 <a>{this.state.email}</a>
@@ -34,7 +38,7 @@ class Brands extends Component{
                 <h1>Create New Coupon</h1>
                 <h2>{this.props.location.state.brand_name}</h2>
                  <Coupon data={this.state} />
-                 <Form brand_name={this.state.brand_name}/>
+                 <Form brand_name={this.state.brand_name} Counter={this.Counter}/>
             </div>
         )
     
