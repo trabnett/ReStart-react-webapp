@@ -47,7 +47,9 @@ const Section2 = () => {
     return( 
         <div>
             <section>
-				<div class="mission-box"> 
+				<div class="mission-box">
+				  <div class="row">
+					<div class="column">
                     <div class="statement-box">
                         <h2 class="center">The mission should you choose to accept it...</h2>
                     </div>
@@ -57,6 +59,8 @@ const Section2 = () => {
                         <p><strong> We recycle less than 9% of items </strong> </p>
                         <p>although more than 70% are recyclable, resuable etc! Most of us don’t know what’s recyclable, but also we can forget </p>
                     </div>
+					</div>
+					<div class="column">
                     <div class="mission-column"></div>
                     <div class="container">
                         <div class="frame">
@@ -69,6 +73,8 @@ const Section2 = () => {
                     <div class="final_action">
                         <a href="" class="btn btn--red btn--animated">Sign Up</a>
                     </div>
+						</div>
+					</div> 
 				</div>
 			</section> 
 

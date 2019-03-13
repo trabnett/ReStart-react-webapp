@@ -610,7 +610,8 @@ ORDER: Base + typography > general layout + grid > page layout > components
       margin-bottom: 8rem; }
       @media only screen and (max-width: 56.25em) {
         .footer__logo-box {
-          margin-bottom: 6rem; } }
+					margin-bottom: 6rem; 
+				} }
     .footer__logo {
       width: 15rem;
       height: auto; }
@@ -921,4 +922,5 @@ ORDER: Base + typography > general layout + grid > page layout > components
       display: flex;
       justify-content: center;
       padding: 2em 1.5em 1em;
-  }
+	}
+	
