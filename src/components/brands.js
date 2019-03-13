@@ -10,7 +10,13 @@ class Brands extends Component{
         super(props);
         this.state={}
     }
-
+		AddNewCoupon = (newCoupon) => {
+			let array = [
+				newCoupon,
+				...this.state.coupons				
+			]
+			this.setState({coupons: array})
+		}
 
     componentDidMount() {
         const payload = this.props.location.state
@@ -47,7 +53,7 @@ class Brands extends Component{
 							</div>
 							<div className="brandcolumn">
                 
-                 <Form brand_name={this.state.brand_name}/>	 
+                 <Form brand_name={this.state.brand_name} AddNewCoupon={this.AddNewCoupon}/>	 
             	</div>
 						</div>
 					</div>

@@ -22,34 +22,63 @@ class ReactFormLabel extends React.Component {
    super(props)
  
    this.state = {
-    expiry_date: null,
+		expiry_date: null,
+		start_date: null,
     coupon_value: ''
    }
  
   }
- 
+	handleExpiryDateChange = (e) => {
+		e.preventDefault()
+		this.setState({expiry_date: e.target.value})
+	}
+
+	handleStartDateChange = (e) => {
+		e.preventDefault()
+		this.setState({start_date: e.target.value})
+	}
+
   handleCouponValueChange = (e) => {
     this.setState({coupon_value: e.target.value})
   }
  
  
-  handleSubmit = (e, message) => {
-   e.preventDefault()
-    this.setState({brand_name: this.props.brand_name}, ()=> {
-   console.log(this.state)
-   let data = {
-    email: this.state.email,
-    password: this.state.password
-  }
-  console.log('hello')
-  var headers = {
-    Accept: 'application/json',
-    "Content-Type": "application/json"
- }
-})
+	handleSubmit = (e, message) => {
+		e.preventDefault()
+		 let code = Math.floor(Math.random()*90000) + 10000;
+		 this.setState({
+			 brand_name: this.props.brand_name,
+			 code: code,
+			 counter: 0
+		 }, ()=> {
+		let data = {...this.state}
+	 console.log(data, "<==================")
+	 var headers = {
+		 Accept: 'application/json',
+		 "Content-Type": "application/json"
+	}
+	fetch('http://172.46.1.207:3000/brands/coupons', {
+			 method: 'POST',
+			 headers: headers,
+			 body: JSON.stringify(data)
+		 })
+		 .then(response => response.json())
+		 .then(data => {
 
 
-  }
+			this.props.AddNewCoupon(data.new_coupon)
+			 console.log(data, "<=======")
+			 this.setState({
+				expiry_date: "yyyy-MM-dd",
+				start_date: "yyyy-MM-dd",
+				coupon_value: ''			
+		 })
+
+		 } )
+	 })
+ 
+ 
+	 }
  
   render() {
    return(
@@ -59,20 +88,20 @@ class ReactFormLabel extends React.Component {
 		 <br></br>
 		 <br></br>
 		 <h4>Start Date:</h4>
-     <input className="datepicker" type="date" id="start" name="trip-start"
-       value="2019-03-14"
+     <input onChange={this.handleStartDateChange} className="datepicker" type="date" id="start" name="trip-start"
+       value={this.state.start_date}
        ></input>
 		<br></br>
 		<br></br>
 		<h4>Expiry Date:</h4>
-		<input className="datepicker" type="date" id="start" name="trip-start"
-					value="2020-07-22"
+		<input onChange={this.handleExpiryDateChange} className="datepicker" type="date" id="start" name="trip-start"
+					value={this.state.expiry_date}
 					max="2025-12-31"></input>
     <br></br>
 		<br></br>
 		<h4>Value/Amount (in dollars):</h4>
  
-      <input className="datepicker" name='coupon_value' type='number' required onChange={this.handleCouponValueChange} value={this.state.coupon_value} />
+      <input className="datepicker" name='coupon_value' type='tel' min="0" required onChange={this.handleCouponValueChange} value={this.state.coupon_value} />
 		
 		<br></br>
 		<br></br>
