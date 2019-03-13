@@ -30,3 +30,12 @@
     width: 100%;
   }
 }
+
+tr {
+	padding: 1em;
+}
+
+td {
+	padding: 0.2em;
+	justify-content: center;
+}

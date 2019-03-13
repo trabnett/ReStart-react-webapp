@@ -1,6 +1,7 @@
 /* this is the form component to make new coupons*/
 import React, { Component } from "react";
 import DropdownDate from 'react-dropdown-date';
+//import DatePicker from 'react-bootstrap-date-picker';
 
 
 class ReactFormLabel extends React.Component {
@@ -52,8 +53,10 @@ class ReactFormLabel extends React.Component {
   render() {
    return(
     <form className='react-form' onSubmit={this.handleSubmit}>
-		<h1>Create a New Coupon</h1>
-     <h2>Please enter an expiry date and value for your new coupon</h2>
+		<h2>Create a New Coupon</h2>
+     <h3>Please enter an expiry date and value for your new coupon</h3>
+		 <br></br>
+		 <br></br>
 
      <DropdownDate
                     startDate={                         // optional, if not provided 1900-01-01 is startDate
@@ -120,6 +123,11 @@ class ReactFormLabel extends React.Component {
      <div className='form-group'>
       <input id='formButton' className='btn' type='submit' placeholder='Send message' />
      </div>
+		 {/* <FormGroup>
+		<ControlLabel>Label</ControlLabel>
+		<DatePicker id="example-datepicker" value={this.state.value} onChange={this.handleChange} />
+		<HelpBlock>Help</HelpBlock>
+	</FormGroup>; */}
     </form>
    )
   }
