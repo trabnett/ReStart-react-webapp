@@ -39,3 +39,14 @@ td {
 	padding: 0.2em;
 	justify-content: center;
 }
+
+.datepicker{
+	width: 15em;
+	border: 0.1em solid black;
+}
+
+.buttonsize{
+	height: 2.3em;
+	width: 10em;
+	background-color: #01A388;
+}

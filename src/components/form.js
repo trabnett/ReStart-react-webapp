@@ -2,6 +2,7 @@
 import React, { Component } from "react";
 import DropdownDate from 'react-dropdown-date';
 //import DatePicker from 'react-bootstrap-date-picker';
+import './../styles/brand.css';
 
 
 class ReactFormLabel extends React.Component {
@@ -57,72 +58,27 @@ class ReactFormLabel extends React.Component {
      <h3>Please enter an expiry date and value for your new coupon</h3>
 		 <br></br>
 		 <br></br>
+		 <h4>Start Date:</h4>
+     <input className="datepicker" type="date" id="start" name="trip-start"
+       value="2019-03-14"
+       ></input>
+		<br></br>
+		<br></br>
+		<h4>Expiry Date:</h4>
+		<input className="datepicker" type="date" id="start" name="trip-start"
+					value="2020-07-22"
+					max="2025-12-31"></input>
+    <br></br>
+		<br></br>
+		<h4>Value/Amount (in dollars):</h4>
+ 
+      <input className="datepicker" name='coupon_value' type='number' required onChange={this.handleCouponValueChange} value={this.state.coupon_value} />
+		
+		<br></br>
+		<br></br>
+ 
+      <input class="btn2 btn2--green btn2--animated buttonsize" type='submit' placeholder='Send message' />
 
-     <DropdownDate
-                    startDate={                         // optional, if not provided 1900-01-01 is startDate
-                        '2019-01-01'                    // 'yyyy-mm-dd' format only
-                    }
-                    endDate={                           // optional, if not provided current date is endDate
-                        '2022-12-31'                    // 'yyyy-mm-dd' format only
-                    }
-                    
-                    onDateChange={(date) => {           // optional
-                        this.setState({ expiry_date: date });
-                    }}
-                    ids={                               // optional
-                        {
-                            year: 'select-year',
-                            month: 'select-month',
-                            day: 'select-day'
-                        }
-                    }
-                    names={                             // optional
-                        {
-                            year: 'year',
-                            month: 'month',
-                            day: 'day'
-                        }
-                    }
-                    classes={                           // optional
-                        {
-                            dateContainer: 'classes',
-                            yearContainer: 'classes',
-                            monthContainer: 'classes',
-                            dayContainer: 'classes',
-                            year: 'classes classes',
-                            month: 'classes classes',
-                            day: 'classes classes',
-                            yearOptions: 'classes',
-                            monthOptions: 'classes',
-                            dayOptions: 'classes'
-                        }
-                    }
-                    defaultValues={                     // optional
-                        {
-                            year: 'select year',
-                            month: 'select month',
-                            day: 'select day'
-                        }
-                    }
-                    options={                           // optional
-                        {
-                            yearReverse: true,              // false by default
-                            monthShort: true,               // false by default
-                            monthCaps: true                 // false by default
-                        }
-                    }
-                />
- 
-
-     <fieldset className='form-group'>
-      <ReactFormLabel htmlFor='formEmail' title='Value:' />
- 
-      <input className='form-input' name='coupon_value' type='number' required onChange={this.handleCouponValueChange} value={this.state.coupon_value} />
-     </fieldset>
- 
-     <div className='form-group'>
-      <input id='formButton' className='btn' type='submit' placeholder='Send message' />
-     </div>
 		 {/* <FormGroup>
 		<ControlLabel>Label</ControlLabel>
 		<DatePicker id="example-datepicker" value={this.state.value} onChange={this.handleChange} />
