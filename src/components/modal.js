@@ -11,12 +11,14 @@ class Modal extends Component {
   constructor(props){
     super(props);
     this.state={
-      email:'coke@coke.com',
-      password:'asdf',
+      email:'',
+			password:'',
+			signup_email:'',
+			signup_password:'',
+			password_confirmation:'',
       redirect: false
     }
   }
-
   
   savePassword( event ) {
     this.setState({
@@ -29,10 +31,20 @@ class Modal extends Component {
         email: event.target.value
     });
   }
+	saveSignupPassword( event ) {
+    this.setState({
+       signup_password: event.target.value
+    });
+  }
 
+  saveSignupEmail( event ) {
+    this.setState({
+        signup_email: event.target.value
+    });
+  }
   savePasswordConfirmation( event ) {
     this.setState({
-        email_confirmation: event.target.value
+        password_confirmation: event.target.value
     });
   }
 
@@ -121,15 +133,15 @@ class Modal extends Component {
               <h3>Please sign up </h3>
               <input type="email" 
               placeholder="Type email" 
-              value={ this.state.email } 
-              onChange={ this.saveEmail.bind( this ) }/>
+              value={ this.state.signup_email } 
+              onChange={ this.saveSignupEmail.bind( this ) }/>
               <input type="password" 
               placeholder="Type password" 
-              value={ this.state.password } 
-              onChange={ this.savePassword.bind( this ) }/>
+              value={ this.state.signup_password } 
+              onChange={ this.saveSignupPassword.bind( this ) }/>
               <input type="password_confirmation" 
               placeholder="Type password confirmation" 
-              value={ this.state.password } 
+              value={ this.state.password_confirmation } 
               onChange={ this.savePasswordConfirmation.bind( this ) }/>
               
               <button className="btn2 btn2--green btn2--animated" type="submit"> Submit </button>

@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import Coupon from "./coupon"
 import Form from "./form"
 import './../styles/brand.css';
-import Graph from "./usagegraph"
+import Graph from "./usagegraph";
+import white_logo_restart from "./../images/white_logo_restart.png";
 
 
 class Brands extends Component{
@@ -40,8 +41,12 @@ class Brands extends Component{
         return (
 					<div>
             <div className="brandheader">
+								<picture>
+                  <source srcSet={white_logo_restart}></source>
+                  <img alt="Full logo" src="images/white_logo_restart.png" className="restartResize"></img>
+                </picture>   
                 <h1>Brand: {this.props.location.state.brand_name}</h1>
-								<button onClick={this.LogOut}>Log out</button>
+								<button className="btn2 logout" onClick={this.LogOut}>Log out</button>
 						</div>
 						<div className="brandrow">
 							<div className="brandcolumn">
