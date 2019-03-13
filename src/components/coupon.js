@@ -1,5 +1,7 @@
+/* this component gathers all issued coupons*/
 import React, { Component } from "react";
 import Form from "./form"
+import './../styles/brand.css';
 
 
 class Coupon extends Component{

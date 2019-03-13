@@ -51,7 +51,8 @@ class ReactFormLabel extends React.Component {
   render() {
    return(
     <form className='react-form' onSubmit={this.handleSubmit}>
-     <h1>Please enter an expiry date and value for your new coupon</h1>
+		<h1>Create a New Coupon</h1>
+     <h2>Please enter an expiry date and value for your new coupon</h2>
 
      <DropdownDate
                     startDate={                         // optional, if not provided 1900-01-01 is startDate

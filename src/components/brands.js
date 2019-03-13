@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import Coupon from "./coupon"
 import Form from "./form"
-
+import './../styles/brand.css';
+import Graph from "./usagegraph"
 
 
 class Brands extends Component{
@@ -26,15 +27,24 @@ class Brands extends Component{
 
     render(props){
         return (
-            <div>
-                <a>{this.state.email}</a>
-                <h1>{this.props.location.state.brand_name}</h1>
-                <img src ={this.props.location.state.logo} />
-                <h1>Create New Coupon</h1>
-                <h2>{this.props.location.state.brand_name}</h2>
+					<div>
+            <div className="brandheader">
+                <h1>Brand: {this.props.location.state.brand_name}</h1>
+						</div>
+						<div className="content-splithalf">
+							<div className="brandcolumn">
+									<h2>Email: {this.state.email}</h2>
+									<img src ={this.props.location.state.logo} class="brandlogo"/>
+									<Graph/>
+							</div>
+							<div className="brandcolumn">
+                <h2>Current & Expired Coupons</h2>
+                <h3>{this.props.location.state.brand_name}</h3>
                  <Coupon data={this.state} />
-                 <Form brand_name={this.state.brand_name}/>
-            </div>
+                 <Form brand_name={this.state.brand_name}/>	 
+            	</div>
+						</div>
+					</div>
         )
     
     }

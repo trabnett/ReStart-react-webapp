@@ -1,0 +1,9 @@
+.brandlogo {
+	max-height: 200px;
+	max-width: 200px;
+}
+.brandheader {
+	width: 100%;
+	background-color: black;
+	color: white;
+}
