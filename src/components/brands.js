@@ -15,7 +15,7 @@ class Brands extends Component{
         const payload = this.props.location.state
         this.setState({...payload}, () => {
             console.log(this.state, "=====this state")
-            fetch(`http://localhost:3000/brands/coupons?email=${this.state.email}`)
+            fetch(`http://192.168.1.107:3000/brands/coupons?email=${this.state.email}`)
             .then(response => response.json())
             .then(data => {
                 this.setState({ coupons: data.coupons })

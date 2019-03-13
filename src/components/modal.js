@@ -46,7 +46,7 @@ class Modal extends Component {
       "Content-Type": "application/json"
    }
     event.preventDefault();
-    fetch('http://localhost:3000/brands/login', {
+    fetch('http://192.168.1.107:3000/brands/login', {
       method: 'POST',
       headers: headers,
       body: JSON.stringify(data)
@@ -88,7 +88,7 @@ class Modal extends Component {
       }}/>;
     }
     return (
-      <Popup trigger={<button class="btn btn--red btn--animated"> Login / Sign Up</button>} modal>
+      <Popup trigger={<button className="btn btn--red btn--animated"> Login / Sign Up</button>} modal>
         {close => (
           <div className="modal">
             <a className="close" onClick={close}>
