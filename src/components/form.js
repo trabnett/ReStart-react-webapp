@@ -40,7 +40,7 @@ class ReactFormLabel extends React.Component {
     }, ()=> {
    console.log(this.state)
    let data = {...this.state}
-  console.log('hello')
+  console.log(data)
   var headers = {
     Accept: 'application/json',
     "Content-Type": "application/json"
@@ -123,7 +123,7 @@ class ReactFormLabel extends React.Component {
      <fieldset className='form-group'>
       <ReactFormLabel htmlFor='formEmail' title='Value:' />
  
-      <input className='form-input' name='coupon_value' type='number' required onChange={this.handleCouponValueChange} value={this.state.coupon_value} />
+      <input className='form-input' name='coupon_value' type='tel' min='0' required onChange={this.handleCouponValueChange} value={this.state.coupon_value} />
      </fieldset>
  
      <div className='form-group'>

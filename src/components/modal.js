@@ -13,6 +13,9 @@ class Modal extends Component {
     this.state={
       email:'coke@coke.com',
       password:'asdf',
+      signup_email: "",
+      signup_password: "",
+      password_confirmation:'asdf',
       redirect: false
     }
   }
@@ -27,6 +30,18 @@ class Modal extends Component {
   saveEmail( event ) {
     this.setState({
         email: event.target.value
+    });
+  }
+
+  saveSignupPassword( event ) {
+    this.setState({
+        signup_password: event.target.value
+    });
+  }
+
+  saveSignupEmail( event ) {
+    this.setState({
+        signup_email: event.target.value
     });
   }
 
@@ -121,13 +136,13 @@ class Modal extends Component {
               <h3>Please sign up </h3>
               <input type="email" 
               placeholder="Type email" 
-              value={ this.state.email } 
-              onChange={ this.saveEmail.bind( this ) }/>
+              value={ this.state.signup_email } 
+              onChange={ this.saveSignupEmail.bind( this ) }/>
               <input type="password" 
               placeholder="Type password" 
               value={ this.state.password } 
-              onChange={ this.savePassword.bind( this ) }/>
-              <input type="password_confirmation" 
+              onChange={ this.saveSignupPassword.bind( this ) }/>
+              <input type="password" 
               placeholder="Type password confirmation" 
               value={ this.state.password } 
               onChange={ this.savePasswordConfirmation.bind( this ) }/>

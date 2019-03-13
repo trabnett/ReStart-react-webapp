@@ -21,22 +21,20 @@ class Coupon extends Component{
             }
                
             return (
-                 <div>
+              <div>
                 <h1>{this.props.data.brand}</h1>
-                <div>
-                    {this.props.data.coupons.map(function(d, idx){
-                        return (
-                            <tr key={idx + 1}>
-                                <td>{idx + 1}</td>
-                                <td>{d.created_at}</td>
-                                <td>{d.value}</td>
-                                <td>{d.expirary_date}</td>
-                                <td><h2>{d.content}</h2></td>
-                            </tr>
-                    )})}
-                </div>
-            </div>
-        )
+                  {this.props.data.coupons.map(function(d, idx){
+                    return (
+                      <tr key={idx + 1}>
+                          <td>{idx + 1}</td>
+                          <td>{d.created_at}</td>
+                          <td>{d.value}</td>
+                          <td>{d.expirary_date}</td>
+                          <td><h2>{d.content}</h2></td>
+                      </tr>
+                  )})}
+              </div>
+            )
     
     }
 

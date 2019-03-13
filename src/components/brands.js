@@ -18,6 +18,7 @@ class Brands extends Component{
             fetch(`http://localhost:3000/brands/coupons?email=${this.state.email}`)
             .then(response => response.json())
             .then(data => {
+                console.log('is this happening?')
                 this.setState({ coupons: data.coupons })
             });
 
