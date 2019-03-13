@@ -28,21 +28,32 @@ class ReactFormLabel extends React.Component {
   handleCouponValueChange = (e) => {
     this.setState({coupon_value: e.target.value})
   }
+
  
  
   handleSubmit = (e, message) => {
    e.preventDefault()
-    this.setState({brand_name: this.props.brand_name}, ()=> {
+    let code = Math.floor(Math.random()*90000) + 10000;
+    this.setState({
+      brand_name: this.props.brand_name,
+      code: code
+    }, ()=> {
    console.log(this.state)
-   let data = {
-    email: this.state.email,
-    password: this.state.password
-  }
+   let data = {...this.state}
   console.log('hello')
   var headers = {
     Accept: 'application/json',
     "Content-Type": "application/json"
  }
+ fetch('http://localhost:3000/brands/coupons', {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data)
+    } )
 })
 
 
@@ -58,7 +69,7 @@ class ReactFormLabel extends React.Component {
                         '2019-01-01'                    // 'yyyy-mm-dd' format only
                     }
                     endDate={                           // optional, if not provided current date is endDate
-                        '2022-12-31'                    // 'yyyy-mm-dd' format only
+                        '2025-12-31'                    // 'yyyy-mm-dd' format only
                     }
                     
                     onDateChange={(date) => {           // optional
