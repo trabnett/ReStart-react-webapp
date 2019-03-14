@@ -7,6 +7,7 @@ import Brands from "./brands";
 
 
 
+
 class Modal extends Component {
   constructor(props){
     super(props);
@@ -79,6 +80,8 @@ class Modal extends Component {
           brand_email: data.email,
           brand_logo: data.brand_logo
          })
+      } else {
+        alert("Hello\nFor today's demonstration, please login with one of our preregistered brands:\nemail: starbucks@starbucks.com password: asdf\nemail: dasani@dasani.com password: asdf\nemail: coke@coke.com password: asdf\nemail: drpepper@drpepper.com password: asdf\nemail: chiquita@chipuita.com password: asdf\nemail: nestle@nestle.com password: asdf\nemail: lighthouselabs@lighthouselabs.com password: asdf\nemail: duracell@duracell.com password: asdf")
       }
     } )
     // .catch(error => {
