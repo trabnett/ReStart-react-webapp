@@ -15,15 +15,15 @@ class Header extends Component {
     return(
         <div>
             <div>
-                <header class="header">
-                    <nav class="header__nav">
-                        <img src={logoblackrestart} alt="ReStart Logo" class="header__logo"></img>
+                <header className="header">
+                    <nav className="header__nav">
+                        <img src={logoblackrestart} alt="ReStart Logo" className="header__logo"></img>
                         <Modal />
                     </nav>
 
-                    <div class="header__text-box">
-                        <h1 class="heading-primary">
-                            <span class="heading-primary--main">Recycling Gamified</span>
+                    <div className="header__text-box">
+                        <h1 className="heading-primary">
+                            <span className="heading-primary--main">Recycling Gamified</span>
                         </h1>
                     </div>
                 </header>

@@ -1,0 +1,63 @@
+.brandlogo {
+	max-height: 200px;
+	max-width: 200px;
+	margin: 2em;
+	box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+}
+.brandheader {
+	width: 100%;
+	background-color: black;
+	color: white;
+	box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+	padding: 1.5em;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.brandrow {
+  display: flex;
+}
+
+.brandcolumn {
+	flex: 33.3333%;
+	margin: 1em;
+	background-color: white;
+	box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+	padding: 2em;
+}
+
+@media screen and (max-width: 600px) {
+  .brandcolumn {
+    width: 100%;
+  }
+}
+
+tr {
+	padding: 1em;
+}
+
+td {
+	padding: 0.2em;
+	justify-content: center;
+}
+
+.datepicker{
+	width: 15em;
+	border: 0.1em solid black;
+}
+
+.buttonsize{
+	height: 2.3em;
+	width: 10em;
+	background-color: #01A388;
+	text-align: center;
+}
+
+.logout {
+	height: 2.3em;
+	text-align: center;
+}
+
+.restartResize {
+	max-height: 5em;
+}

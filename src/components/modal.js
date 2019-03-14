@@ -11,15 +11,15 @@ class Modal extends Component {
   constructor(props){
     super(props);
     this.state={
-      email:'coke@coke.com',
-      password:'asdf',
-      signup_email: "",
-      signup_password: "",
-      password_confirmation:'asdf',
+
+      email:'',
+			password:'',
+			signup_email:'',
+			signup_password:'',
+			password_confirmation:'',
       redirect: false
     }
   }
-
   
   savePassword( event ) {
     this.setState({
@@ -32,12 +32,12 @@ class Modal extends Component {
         email: event.target.value
     });
   }
-
-  saveSignupPassword( event ) {
+	saveSignupPassword( event ) {
     this.setState({
-        signup_password: event.target.value
+       signup_password: event.target.value
     });
   }
+
 
   saveSignupEmail( event ) {
     this.setState({
@@ -47,7 +47,7 @@ class Modal extends Component {
 
   savePasswordConfirmation( event ) {
     this.setState({
-        email_confirmation: event.target.value
+        password_confirmation: event.target.value
     });
   }
 
@@ -61,7 +61,7 @@ class Modal extends Component {
       "Content-Type": "application/json"
    }
     event.preventDefault();
-    fetch('http://localhost:3000/brands/login', {
+    fetch('http://172.46.1.207:3000/brands/login', {
       method: 'POST',
       headers: headers,
       body: JSON.stringify(data)
@@ -103,7 +103,7 @@ class Modal extends Component {
       }}/>;
     }
     return (
-      <Popup trigger={<button class="btn btn--red btn--animated"> Login / Sign Up</button>} modal>
+      <Popup trigger={<button className="btn btn--red btn--animated"> Login / Sign Up</button>} modal>
         {close => (
           <div className="modal">
             <a className="close" onClick={close}>
@@ -126,7 +126,7 @@ class Modal extends Component {
               value={ this.state.password } 
               onChange={ this.savePassword.bind( this ) }/>
               
-              <button class="btn2 btn2--green btn2--animated" type="submit"> Submit </button>
+              <button className="btn2 btn2--green btn2--animated" type="submit"> Submit </button>
             </form>
 						<a> Forgot Password </a>
 						<br></br>
@@ -140,14 +140,15 @@ class Modal extends Component {
               onChange={ this.saveSignupEmail.bind( this ) }/>
               <input type="password" 
               placeholder="Type password" 
-              value={ this.state.password } 
+
+              value={ this.state.signup_password } 
               onChange={ this.saveSignupPassword.bind( this ) }/>
-              <input type="password" 
+              <input type="password_confirmation" 
               placeholder="Type password confirmation" 
-              value={ this.state.password } 
+              value={ this.state.password_confirmation } 
               onChange={ this.savePasswordConfirmation.bind( this ) }/>
               
-              <button class="btn2 btn2--green btn2--animated" type="submit"> Submit </button>
+              <button className="btn2 btn2--green btn2--animated" type="submit"> Submit </button>
             </form>
           </div>
             <div>

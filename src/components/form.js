@@ -1,5 +1,8 @@
+/* this is the form component to make new coupons*/
 import React, { Component } from "react";
 import DropdownDate from 'react-dropdown-date';
+//import DatePicker from 'react-bootstrap-date-picker';
+import './../styles/brand.css';
 
 
 class ReactFormLabel extends React.Component {
@@ -19,18 +22,26 @@ class ReactFormLabel extends React.Component {
    super(props)
  
    this.state = {
-    expiry_date: null,
+		expiry_date: null,
+		start_date: null,
     coupon_value: ''
    }
  
   }
- 
+	handleExpiryDateChange = (e) => {
+		e.preventDefault()
+		this.setState({expiry_date: e.target.value})
+	}
+
+	handleStartDateChange = (e) => {
+		e.preventDefault()
+		this.setState({start_date: e.target.value})
+	}
+
   handleCouponValueChange = (e) => {
     this.setState({coupon_value: e.target.value})
   }
 
- 
- 
   handleSubmit = (e, message) => {
    e.preventDefault()
     let code = Math.floor(Math.random()*90000) + 10000;
@@ -57,78 +68,55 @@ class ReactFormLabel extends React.Component {
 })
 
 
-  }
+
+			this.props.AddNewCoupon(data.new_coupon)
+			 console.log(data, "<=======")
+			 this.setState({
+				expiry_date: "yyyy-MM-dd",
+				start_date: "yyyy-MM-dd",
+				coupon_value: ''			
+		 })
+
+		 } )
+	 })
+ 
+ 
+	 }
  
   render() {
    return(
     <form className='react-form' onSubmit={this.handleSubmit}>
-     <h1>Please enter an expiry date and value for your new coupon</h1>
+		<h2>Create a New Coupon</h2>
+     <h3>Please enter an expiry date and value for your new coupon</h3>
+		 <br></br>
+		 <br></br>
+		 <h4>Start Date:</h4>
+     <input onChange={this.handleStartDateChange} className="datepicker" type="date" id="start" name="trip-start"
+       value={this.state.start_date}
+       ></input>
+		<br></br>
+		<br></br>
+		<h4>Expiry Date:</h4>
+		<input onChange={this.handleExpiryDateChange} className="datepicker" type="date" id="start" name="trip-start"
+					value={this.state.expiry_date}
+					max="2025-12-31"></input>
+    <br></br>
+		<br></br>
+		<h4>Value/Amount (in dollars):</h4>
+ 
+      <input className="datepicker" name='coupon_value' type='tel' min="0" required onChange={this.handleCouponValueChange} value={this.state.coupon_value} />
+		
+		<br></br>
+		<br></br>
 
-     <DropdownDate
-                    startDate={                         // optional, if not provided 1900-01-01 is startDate
-                        '2019-01-01'                    // 'yyyy-mm-dd' format only
-                    }
-                    endDate={                           // optional, if not provided current date is endDate
-                        '2025-12-31'                    // 'yyyy-mm-dd' format only
-                    }
-                    
-                    onDateChange={(date) => {           // optional
-                        this.setState({ expiry_date: date });
-                    }}
-                    ids={                               // optional
-                        {
-                            year: 'select-year',
-                            month: 'select-month',
-                            day: 'select-day'
-                        }
-                    }
-                    names={                             // optional
-                        {
-                            year: 'year',
-                            month: 'month',
-                            day: 'day'
-                        }
-                    }
-                    classes={                           // optional
-                        {
-                            dateContainer: 'classes',
-                            yearContainer: 'classes',
-                            monthContainer: 'classes',
-                            dayContainer: 'classes',
-                            year: 'classes classes',
-                            month: 'classes classes',
-                            day: 'classes classes',
-                            yearOptions: 'classes',
-                            monthOptions: 'classes',
-                            dayOptions: 'classes'
-                        }
-                    }
-                    defaultValues={                     // optional
-                        {
-                            year: 'select year',
-                            month: 'select month',
-                            day: 'select day'
-                        }
-                    }
-                    options={                           // optional
-                        {
-                            yearReverse: true,              // false by default
-                            monthShort: true,               // false by default
-                            monthCaps: true                 // false by default
-                        }
-                    }
-                />
  
+      <input class="btn2 btn2--green btn2--animated buttonsize" type='submit' placeholder='Send message' />
 
-     <fieldset className='form-group'>
-      <ReactFormLabel htmlFor='formEmail' title='Value:' />
- 
-      <input className='form-input' name='coupon_value' type='tel' min='0' required onChange={this.handleCouponValueChange} value={this.state.coupon_value} />
-     </fieldset>
- 
-     <div className='form-group'>
-      <input id='formButton' className='btn' type='submit' placeholder='Send message' />
-     </div>
+		 {/* <FormGroup>
+		<ControlLabel>Label</ControlLabel>
+		<DatePicker id="example-datepicker" value={this.state.value} onChange={this.handleChange} />
+		<HelpBlock>Help</HelpBlock>
+	</FormGroup>; */}
     </form>
    )
   }

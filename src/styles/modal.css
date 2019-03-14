@@ -6,7 +6,8 @@
       border-bottom: 1px solid gray;
     font-size: 18px;
     text-align: center;
-    padding: 5px;
+		padding: 5px;
+		font-weight: bold;
   }
   .modal > .content {
     width: 100%;
