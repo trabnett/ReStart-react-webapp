@@ -52,8 +52,8 @@ class ReactFormLabel extends React.Component {
     })
     .then(response => response.json())
     .then(data => {
-    this.props.Counter()
-      console.log(this.props, "<=======")
+      this.props.AddNewCoupon(data.new_coupon)
+      console.log(data, "<=======")
     } )
 })
 

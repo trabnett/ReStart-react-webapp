@@ -11,11 +11,11 @@ class Modal extends Component {
   constructor(props){
     super(props);
     this.state={
-      email:'coke@coke.com',
-      password:'asdf',
+      email:'',
+      password:'',
       signup_email: "",
       signup_password: "",
-      password_confirmation:'asdf',
+      password_confirmation:'',
       redirect: false
     }
   }
@@ -144,7 +144,7 @@ class Modal extends Component {
               onChange={ this.saveSignupPassword.bind( this ) }/>
               <input type="password" 
               placeholder="Type password confirmation" 
-              value={ this.state.password } 
+              value={ this.state.password_confirmation } 
               onChange={ this.savePasswordConfirmation.bind( this ) }/>
               
               <button class="btn2 btn2--green btn2--animated" type="submit"> Submit </button>
