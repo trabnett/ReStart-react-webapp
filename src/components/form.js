@@ -40,7 +40,7 @@ class ReactFormLabel extends React.Component {
     }
 
     handleCouponValueChange = (e) => {
-      if (!e.target.value == "") {
+      if (!e.target.value == "" && parseInt(e.target.value)) {
         this.setState({coupon_value: e.target.value.match(/^-?\d+(?:\.\d{0,2})?/)[0]})
       } else {
         this.setState({coupon_value: ''})
