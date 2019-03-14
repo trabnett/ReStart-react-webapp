@@ -52,6 +52,7 @@ class Modal extends Component {
   }
 
   handleFormSubmit( event ) {
+    console.log(this.state.email, this.state)
     let data = {
       email: this.state.email,
       password: this.state.password
@@ -61,7 +62,8 @@ class Modal extends Component {
       "Content-Type": "application/json"
    }
     event.preventDefault();
-    fetch('http://172.46.1.207:3000/brands/login', {
+    console.log('!!!')
+    fetch('http://localhost:3000/brands/login', {
       method: 'POST',
       headers: headers,
       body: JSON.stringify(data)

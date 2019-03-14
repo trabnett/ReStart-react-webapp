@@ -12,10 +12,11 @@ class Brands extends Component{
 				this.state={redirect: false}
     }
 		AddNewCoupon = (newCoupon) => {
+            console.log("here")
 			let array = [
 				newCoupon,
 				...this.state.coupons				
-			]
+            ]
 			this.setState({coupons: array})
 		}
 
@@ -28,7 +29,7 @@ class Brands extends Component{
         const payload = this.props.location.state
         this.setState({...payload}, () => {
             console.log(this.state, "=====this state")
-            fetch(`http://172.46.1.207:3000/brands/coupons?email=${this.state.email}`)
+            fetch(`http://localhost:3000/brands/coupons?email=${this.state.email}`)
             .then(response => response.json())
             .then(data => {
                 console.log('is this happening?')
