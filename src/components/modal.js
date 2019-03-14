@@ -11,6 +11,7 @@ class Modal extends Component {
   constructor(props){
     super(props);
     this.state={
+
       email:'',
 			password:'',
 			signup_email:'',
@@ -37,11 +38,13 @@ class Modal extends Component {
     });
   }
 
+
   saveSignupEmail( event ) {
     this.setState({
         signup_email: event.target.value
     });
   }
+
   savePasswordConfirmation( event ) {
     this.setState({
         password_confirmation: event.target.value
@@ -137,6 +140,7 @@ class Modal extends Component {
               onChange={ this.saveSignupEmail.bind( this ) }/>
               <input type="password" 
               placeholder="Type password" 
+
               value={ this.state.signup_password } 
               onChange={ this.saveSignupPassword.bind( this ) }/>
               <input type="password_confirmation" 

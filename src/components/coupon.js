@@ -50,7 +50,6 @@ class Coupon extends Component{
                 </div>
             </div>
         )
-    
     }
 
 }
