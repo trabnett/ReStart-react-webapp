@@ -12,11 +12,16 @@ class Brands extends Component{
 				this.state={redirect: false}
     }
 		AddNewCoupon = (newCoupon) => {
-            console.log("here")
-			let array = [
-				newCoupon,
-				...this.state.coupons				
-            ]
+            let array = []
+            if (this.state.coupons) {
+                array = [
+                    newCoupon,
+                    ...this.state.coupons				
+                ]
+            } else {
+                array = [newCoupon]
+            }
+			
 			this.setState({coupons: array})
 		}
 

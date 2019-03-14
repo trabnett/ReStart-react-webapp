@@ -19,6 +19,7 @@ class Modal extends Component {
 			password_confirmation:'',
       redirect: false
     }
+
   }
   
   savePassword( event ) {
@@ -52,7 +53,6 @@ class Modal extends Component {
   }
 
   handleFormSubmit( event ) {
-    console.log(this.state.email, this.state)
     let data = {
       email: this.state.email,
       password: this.state.password
@@ -62,7 +62,6 @@ class Modal extends Component {
       "Content-Type": "application/json"
    }
     event.preventDefault();
-    console.log('!!!')
     fetch('http://localhost:3000/brands/login', {
       method: 'POST',
       headers: headers,
@@ -70,7 +69,8 @@ class Modal extends Component {
     })
     .then(response => response.json())
     .then(data => {
-      if (data.alert = "sucessful login") {
+      if (data.alert == "sucessful login") {
+        console.log(data, "<=======")
         this.setState({
           redirect: true,
           brand_name: data.brand_name,
@@ -91,10 +91,10 @@ class Modal extends Component {
  
 
   }
+
   render(){
     const { redirect } = this.state;
     if (redirect) {
-      console.log("heyheyhey", this.state)
       return <Redirect to={{
         pathname: '/brands',
         state: { 

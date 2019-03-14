@@ -40,7 +40,12 @@ class ReactFormLabel extends React.Component {
     }
 
     handleCouponValueChange = (e) => {
-      this.setState({coupon_value: e.target.value})
+      if (!e.target.value == "") {
+        this.setState({coupon_value: e.target.value.match(/^-?\d+(?:\.\d{0,2})?/)[0]})
+      } else {
+        this.setState({coupon_value: ''})
+      }
+      
     }
 
     handleSubmit = (e, message) => {
@@ -96,7 +101,7 @@ class ReactFormLabel extends React.Component {
 		      <br></br>
 		      <h4>Value/Amount (in dollars):</h4>
  
-          <input className="datepicker" name='coupon_value' type='tel' min="0" required onChange={this.handleCouponValueChange} value={this.state.coupon_value} />
+          <input className="datepicker" name='coupon_value' type='tel' min="0" step="0.1" required onChange={this.handleCouponValueChange} value={this.state.coupon_value} />
 		
 		      <br></br>
 		      <br></br>
