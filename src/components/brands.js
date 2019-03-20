@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Coupon from "./coupon"
 import Form from "./form"
+import Confirm from "./confirm"
 import './../styles/brand.css';
 import Graph from "./usagegraph";
 import white_logo_restart from "./../images/white_logo_restart.png";
@@ -46,15 +47,15 @@ class Brands extends Component{
 
     render(props){
         return (
-					<div>
+		<div>
             <div className="brandheader">
-								<picture>
+				<picture>
                   <source srcSet={white_logo_restart}></source>
                   <img alt="Full logo" src="images/white_logo_restart.png" className="restartResize"></img>
                 </picture>   
                 <h1>Brand: {this.props.location.state.brand_name}</h1>
-								<button className="btn2 logout" onClick={this.LogOut}>Log out</button>
-						</div>
+				<button className="btn2 logout" onClick={this.LogOut}>Log out</button>
+			</div>
 						<div className="brandrow">
 							<div className="brandcolumn">
 									<h2>Profile:</h2>
@@ -74,7 +75,8 @@ class Brands extends Component{
                  <Form brand_name={this.state.brand_name} AddNewCoupon={this.AddNewCoupon}/>	 
             	</div>
 						</div>
-					</div>
+		</div>
+
         )
     
     }

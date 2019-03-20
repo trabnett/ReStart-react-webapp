@@ -4,6 +4,8 @@ import { createBrowserHistory } from 'history';
 import Home from "./components/home"
 import Brands from "./components/brands"
 import Logout from "./components/logout"
+import Users from  "./components/users"
+import Confirm from "./components/confirm"
 import Error from "./components/error"
 import Modal from "./components/modal"
 import Navigation from "./components/navigation"
@@ -22,6 +24,8 @@ class App extends Component {
               <Route path="/" component={Home} exact/>
               <Route path="/brands" component={Brands}/>
               <Route path="/logout" component={Logout}/>
+              <Route path="/users" component={Users}/>
+              <Route path="/confirm" component={Confirm}/>
               <Route component={Error}/>
             </Switch>
       </BrowserRouter>
