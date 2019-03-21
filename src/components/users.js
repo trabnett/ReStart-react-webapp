@@ -42,7 +42,7 @@ class Users extends Component{
                 </div>
                 <div className="brandrow">
                     <div className="brandcolumn">
-                        <h2>Profile:</h2>
+                        <h2>User Profile:</h2>
                         <h2>First Name: {this.state.first_name}</h2>
                         <h2>Last Name: {this.state.last_name}</h2>
                         <h2>Points: {this.state.points}</h2>
