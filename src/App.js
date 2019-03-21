@@ -9,6 +9,7 @@ import Confirm from "./components/confirm"
 import Error from "./components/error"
 import Modal from "./components/modal"
 import Navigation from "./components/navigation"
+import store from "./redux/store";
 
 
 

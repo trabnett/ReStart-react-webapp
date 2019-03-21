@@ -7,6 +7,11 @@ import Brands from "./brands";
 import Users from "./users";
 import Confirm from "./confirm"
 import { SSL_OP_ALLOW_UNSAFE_LEGACY_RENEGOTIATION } from "constants";
+// you must require the store on any page that gets it's state from redux
+import store from '../redux/store';
+// 'login' is a function that triggers a redux action. you must import any actions if you want use them
+import { login } from "../redux/actions";
+import { bindActionCreators } from "redux";
 
 
 
@@ -97,18 +102,32 @@ class Modal extends Component {
     })
     .then(response => response.json())
     .then(data => {
-      if (data.alert == "sucessful login") {
-        console.log(data, "<=======")
-        this.setState({
-          redirect: true,
-          brand_name: data.brand_name,
+      if (data.alert === "sucessful login" && this.state.user === "Brand") {
+        // store.dispatch is a redux command. it takes a function (in this case 'login'). You can see what this funciton is doing in '../redux/reducers'
+        store.dispatch( login({
+          brand: data.brand_name,
           coupons: data.coupons,
           brand_id: data.session_id,
           brand_email: data.email,
           brand_logo: data.brand_logo
+        }) )
+        this.setState({
+          redirect: true,
          })
+      } else if (data.alert === "sucessful login" && this.state.user === "User"){
+        console.log(data)
+        store.dispatch( login({
+          first_name: data.first_name,
+          last_name: data.last_name,
+          coupons: data.coupons,
+          email: data.email,
+          postcode: data.postcode,
+          points: data.points,
+          session_id: data.session_id
+        }) )
+        this.setState({redirect: true})
       } else {
-        alert("Hello\nFor today's demonstration, please login with one of our preregistered brands:\nemail: starbucks@starbucks.com password: asdf\nemail: dasani@dasani.com password: asdf\nemail: coke@coke.com password: asdf\nemail: drpepper@drpepper.com password: asdf\nemail: chiquita@chipuita.com password: asdf\nemail: nestle@nestle.com password: asdf\nemail: lighthouselabs@lighthouselabs.com password: asdf\nemail: duracell@duracell.com password: asdf")
+        alert("Please register or login with one of our preregistered brands:\nemail: starbucks@starbucks.com password: asdf\nemail: dasani@dasani.com password: asdf\nemail: coke@coke.com password: asdf\nemail: drpepper@drpepper.com password: asdf\nemail: chiquita@chipuita.com password: asdf\nemail: nestle@nestle.com password: asdf\nemail: lighthouselabs@lighthouselabs.com password: asdf\nemail: duracell@duracell.com password: asdf")
       }
     } )
   }

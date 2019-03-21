@@ -4,6 +4,7 @@ import Form from "./form"
 import './../styles/brand.css';
 import Graph from "./usagegraph";
 import white_logo_restart from "./../images/white_logo_restart.png";
+import store from '../redux/store';
 
 
 class Users extends Component{
@@ -19,6 +20,7 @@ class Users extends Component{
     }
 
     componentDidMount() {
+        console.log(store.getState(), "this is the sotre on the users page")
         const payload = this.props.location.state
         this.setState({...payload})
     }
