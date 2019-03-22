@@ -148,7 +148,7 @@ class Modal extends Component {
       if (data.alert === "sucessful login" && this.state.user === "Brand") {
         // store.dispatch is a redux command. it takes a function (in this case 'login'). You can see what this funciton is doing in '../redux/reducers'
         store.dispatch( login({
-          brand: data.brand_name,
+          brand_name: data.brand_name,
           coupons: data.coupons,
           brand_id: data.session_id,
           brand_email: data.email,
