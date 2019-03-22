@@ -63,18 +63,21 @@ class Users extends Component{
                     <div className="brandcolumn">
                         <h1>Your active coupons:</h1>
                         <table>
-                            <tr>
-                                <th>Coupon #</th>
-                                <th>Date Issued</th>
-                                <th>Value</th>
-                                <th>Expiry Date</th>
-                                <th>Coupon ID</th>
-                            </tr>
+                            <div>
+                                <tr>
+                                    <th>Brand</th>
+                                    <th>Coupon #</th>
+                                    <th>Date Issued</th>
+                                    <th>Value</th>
+                                    <th>Expiry Date</th>
+                                    <th>Coupon ID</th>
+                                </tr>
+                            </div>
                             {this.state.coupons.map(function(d, idx){
                                 return (
                                     <div>
-                                    <tr key={idx + 2}><img src ={d.logo} class="brandlogo"/>	</tr>
                                     <tr key={idx + 1}>
+                                        <td><img src ={d.logo} class="userbrandlogo"/></td>
                                         <td>{idx + 1}</td>
                                         <td>{d.issue_date.slice(0,-14)}</td>
                                         <td>${d.amount}</td>

@@ -21,11 +21,13 @@ function rootReducer(state = initialState, action) {
   if (action.type === LOGIN) {
       if (action.payload.brand_logo){
         return Object.assign({}, state, {
-            brand: action.payload
+            brand: action.payload,
+            user: null
         })
       } else {
         return Object.assign({}, state, {
-            user: action.payload
+            user: action.payload,
+            brand: null
         })
       }
 

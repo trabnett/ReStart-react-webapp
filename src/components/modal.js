@@ -76,10 +76,49 @@ class Modal extends Component {
   }
   handleRegistration = (event) => {
     event.preventDefault();
+    console.log(this.state.signup_email, this.state.signup_password, this.state.password_confirmation)
+    let url = ""
+    if (this.state.user === "Brand"){
+      url = 'http://localhost:3000/brands'
+    } else {
+      url = 'http://localhost:3000/users'
+    }
+    let data = {
+      email: this.state.signup_email,
+      password: this.state.signup_password,
+      password_confirmation: this.state.password_confirmation
+    }
+    var headers = {
+      Accept: 'application/json',
+      "Content-Type": "application/json"
+   }
+   fetch(url, {
+    method: 'POST',
+    headers: headers,
+    body: JSON.stringify(data)
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log(data)
+    if (this.state.user === "Brand"){
+      store.dispatch( login({
+        brand_email: data.brand.email,
+        brand_id: data.brand.id,
+        brand_logo: "placeholder"
+      }))
+    } else {
+      console.log(data.email)
+      store.dispatch( login({
+        email: data.user.email,
+        session_id: data.user.id
+      }))
+    }
+  })
     this.setState({register_user: true})
   }
 
   handleFormSubmit( event ) {
+    event.preventDefault();
     let url = ""
     if (this.state.user === "Brand") {
       url = 'http://localhost:3000/brands/login'
@@ -94,7 +133,6 @@ class Modal extends Component {
       Accept: 'application/json',
       "Content-Type": "application/json"
    }
-    event.preventDefault();
     fetch(url, {
       method: 'POST',
       headers: headers,
