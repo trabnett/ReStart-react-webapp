@@ -76,7 +76,6 @@ class Modal extends Component {
   }
   handleRegistration = (event) => {
     event.preventDefault();
-    console.log(this.state.signup_email, this.state.signup_password, this.state.password_confirmation)
     let url = ""
     if (this.state.user === "Brand"){
       url = 'http://localhost:3000/brands'
@@ -100,21 +99,27 @@ class Modal extends Component {
   .then(response => response.json())
   .then(data => {
     console.log(data)
-    if (this.state.user === "Brand"){
+    if (this.state.user === "Brand" && data.alert === "brand created"){
       store.dispatch( login({
         brand_email: data.brand.email,
         brand_id: data.brand.id,
         brand_logo: "placeholder"
       }))
-    } else {
+      this.setState({register_user: true})
+    } else if (this.state.user === "User" && data.alert === "user created") {
       console.log(data.email)
       store.dispatch( login({
         email: data.user.email,
         session_id: data.user.id
       }))
+      this.setState({register_user: true})
+    } else if (data.exception === "#<ActiveRecord::RecordInvalid: Validation failed: Email has already been taken>"){
+      alert("That email is already taken")
+    } else {
+      alert("Please make sure all fields are filled out")
     }
   })
-    this.setState({register_user: true})
+
   }
 
   handleFormSubmit( event ) {
@@ -240,7 +245,7 @@ class Modal extends Component {
 
               value={ this.state.signup_password } 
               onChange={ this.saveSignupPassword.bind( this ) }/>
-              <input type="password_confirmation" 
+              <input type="password" 
               placeholder={this.state.user + " password confirmation"} 
               value={ this.state.password_confirmation } 
               onChange={ this.savePasswordConfirmation.bind( this ) }/>
