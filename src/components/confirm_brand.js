@@ -10,7 +10,7 @@ import store from '../redux/store';
 import { login } from "../redux/actions";
 
 
-class Confirm extends Component{
+class ConfirmBrand extends Component{
     constructor(props) {
         super(props);
 				this.state={
@@ -39,36 +39,28 @@ class Confirm extends Component{
         let path = `/`;
         this.props.history.push(path);
     }
-    handleFirstNameChange = (e) => {
+    handleNameChange = (e) => {
         e.preventDefault()
-        let user = {...this.state.user}
-        user.first_name = e.target.value;
-        this.setState({user}, () => {
-            console.log(this.state)
-        })
-    }
-    handleLastNameChange = (e) => {
-        e.preventDefault()
-        let user = {...this.state.user}
-        user.last_name = e.target.value;
-        this.setState({user}, () => {
-            console.log(this.state.user)
+        let brand = {...this.state.brand}
+        brand.brand_name = e.target.value;
+        this.setState({brand}, () => {
+            console.log(this.state.brand)
         })
     }
     handleEmailChange = (e) => {
         e.preventDefault()
-        let user = {...this.state.user}
-        user.email = e.target.value
-        this.setState({user}, () => {
-            console.log(this.state.user)
+        let brand = {...this.state.brand}
+        brand.brand_email = e.target.value
+        this.setState({brand}, () => {
+            console.log(this.state.brand)
         })
     }
-    handlePostcodeChange = (e) => {
+    handleLogoChange = (e) => {
         e.preventDefault()
-        let user = {...this.state.user}
-        user.postcode = e.target.value;
-        this.setState({user}, () => {
-            console.log(this.state.user)
+        let brand = {...this.state.brand}
+        brand.brand_logo = e.target.value;
+        this.setState({brand}, () => {
+            console.log(this.state.brand)
         })
     }
     handleSubmit = (event) => {
@@ -76,23 +68,14 @@ class Confirm extends Component{
         console.log("yep")
         let data = {}
         let url = ""
-        if (this.state.brand === null){
-          url = `http://localhost:3000/users/${this.state.user.session_id}`
+        if (this.state.user === null){
+          url = 'http://localhost:3000/brands'
           data = {
-            email: this.state.user.email,
-            first_name: this.state.user.first_name,
-            last_name: this.state.user.last_name,
-            postcode: this.state.user.postcode
+            brand_name: this.state.brand.brand_name,
+            brand_id: this.state.brand.brand_id,
+            brand_logo: this.state.brand.brand_logo,
+            brand_email: this.state.brand.brand_email
           }
-        } else {
-          url = 'http://localhost:3000/users'
-          data = {
-            brand_name: "",
-            brand_id: null,
-            brand_logo: "",
-            brand_email: "",
-            coupons: [],
-            }
         }
         var headers = {
           Accept: 'application/json',
@@ -105,24 +88,15 @@ class Confirm extends Component{
       })
       .then(response => response.json())
       .then(data => {
+          console.log(data)
         if (this.state.brand){
           store.dispatch( login({
-            brand_email: data.brand.email,
-            brand_id: data.brand.id,
-            brand_logo: "placeholder"
+            brand_email: data.email,
+            brand_id: data.id,
+            brand_logo: data.logo,
+            brand_name: data.name
           }))
-          this.setState({register_user: true})
-        } else if (this.state.user) {
-          console.log(data,"this is data right before I set it")
-          store.dispatch( login({
-            email: data.email,
-            first_name: data.first_name,
-            last_name: data.last_name,
-            postcode: data.postcode,
-            points: data.points,
-            session_id: data.id
-          }))
-          this.setState({redirect_user: true})
+          this.setState({redirect_brand: true})
         } else if (data.exception === "#<ActiveRecord::RecordInvalid: Validation failed: Email has already been taken>"){
           alert("That email is already taken")
         } else {
@@ -137,9 +111,9 @@ class Confirm extends Component{
         this.setState({...store.getState()})
     }
     render(){
-        if (this.state.redirect_user){
+        if (this.state.redirect_brand){
             return(
-                <Redirect to="/users"/>
+                <Redirect to="/brands"/>
             )
         }
         return(
@@ -153,17 +127,16 @@ class Confirm extends Component{
                     <button className="btn2 logout" onClick={this.LogOut}>Log out</button>
                 </div>
                 <div className="brandcolumn">
-                    <h1 className="confirm_form">Hello {this.state.user.first_name}. Welcom to ReStart</h1>
+                    <h1 className="confirm_form">Hello {this.state.brand.brand_name}. Welcom to ReStart</h1>
                     <div className="confirm_form">
                         <form className='react-form' onSubmit={this.handleSubmit}>
                             <h3>Please enter your data to create your account</h3>
-                            <input className="datepicker" name='first_name' type='text' placeholder="First Name" required onChange={this.handleFirstNameChange} value={this.state.user.first_name} />
+                            <input className="datepicker" name='brand_name' type='text' placeholder="Brand Name" required onChange={this.handleNameChange} value={this.state.brand.brand_name} />
                             <br></br>
-                            <input className="datepicker" name='last_name' type='text' placeholder="Last Name" required onChange={this.handleLastNameChange} value={this.state.user.last_name} />
+                            <h2>Please take a minute to enter a web address of your company's logo:</h2>
+                            <input className="datepicker" name='logo' type='text' placeholder="Logo URL" required onChange={this.handleLogoChange} value={this.state.brand.logo} />
                             <br></br>
-                            <input className="datepicker" name='email' type='text' placeholder={this.state.user.email} onChange={this.handleEmailChange} value={this.state.user.email} />
-                            <br></br>
-                            <input className="datepicker" name='postcode' type='text' required placeholder="Postal Code" onChange={this.handlePostcodeChange} value={this.state.user.postcode} />
+                            <input className="datepicker" name='email' type='text' placeholder={this.state.brand.brand_email} onChange={this.handleEmailChange} value={this.state.brand.brand_email} />
                             <br></br>
                             <input class="btn2 btn2--green btn2--animated buttonsize" type='submit' placeholder='Send message' />
                         </form>
@@ -174,4 +147,4 @@ class Confirm extends Component{
     }
 }
 
-export default Confirm;
+export default ConfirmBrand;

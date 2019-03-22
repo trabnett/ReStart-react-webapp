@@ -5,8 +5,9 @@ import { createBrowserHistory } from 'history';
 import './../styles/modal.css';
 import Brands from "./brands";
 import Users from "./users";
-import Confirm from "./confirm"
-import { SSL_OP_ALLOW_UNSAFE_LEGACY_RENEGOTIATION } from "constants";
+import Confirm from "./confirm";
+import ConfirmBrand from "./confirm_brand";
+import { LOGIN } from "../redux/constants";
 // you must require the store on any page that gets it's state from redux
 import store from '../redux/store';
 // 'login' is a function that triggers a redux action. you must import any actions if you want use them
@@ -98,14 +99,13 @@ class Modal extends Component {
   })
   .then(response => response.json())
   .then(data => {
-    console.log(data)
     if (this.state.user === "Brand" && data.alert === "brand created"){
       store.dispatch( login({
         brand_email: data.brand.email,
         brand_id: data.brand.id,
         brand_logo: "placeholder"
       }))
-      this.setState({register_user: true})
+      this.setState({register_brand: true})
     } else if (this.state.user === "User" && data.alert === "user created") {
       console.log(data.email)
       store.dispatch( login({
@@ -185,6 +185,10 @@ class Modal extends Component {
           email: this.state.brand_email
         }
       }}/>;
+    }
+    if (this.state.register_brand){
+      console.log("here")
+      return <Redirect to="./confirm_brand" />
     }
     const { redirect } = this.state;
     if (redirect && this.state.user === "Brand") {

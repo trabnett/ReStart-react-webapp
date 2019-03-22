@@ -18,6 +18,7 @@ const initialState = {
     }
 };
 function rootReducer(state = initialState, action) {
+  console.log(action.payload, "in reducer")
   if (action.type === LOGIN) {
       if (action.payload.brand_logo){
         return Object.assign({}, state, {

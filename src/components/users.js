@@ -3,15 +3,18 @@ import Coupon from "./coupon"
 import Form from "./form"
 import './../styles/brand.css';
 import Graph from "./usagegraph";
+import UserCoupons from "./user_coupons"
 import white_logo_restart from "./../images/white_logo_restart.png";
 import store from '../redux/store';
+import { login } from "../redux/actions";
+import { bindActionCreators } from "redux";
 var Barcode = require('react-barcode');
 
 
 class Users extends Component{
     constructor(props) {
         super(props);
-				this.state={redirect: false}
+		this.state={redirect: false}
     }
 
 
@@ -21,15 +24,12 @@ class Users extends Component{
     }
 
     componentDidMount() {
-        console.log(store.getState().user, "this is the sotre on the users page")
         const payload = store.getState().user
-        this.setState({...store.getState().user}, () => {
-            console.log(this.state, "<== this.state")
-        })
+        this.setState({...store.getState().user})
     }
 
     render(props){
-        if (this.state.coupons && this.state.first_name) {
+        if (this.state.first_name) {
         return (
             <div>
                 <div className="brandheader">
@@ -61,32 +61,7 @@ class Users extends Component{
 
                     </div>
                     <div className="brandcolumn">
-                        <h1>Your active coupons:</h1>
-                        <table>
-                            <div>
-                                <tr>
-                                    <th>Brand</th>
-                                    <th>Coupon #</th>
-                                    <th>Date Issued</th>
-                                    <th>Value</th>
-                                    <th>Expiry Date</th>
-                                    <th>Coupon ID</th>
-                                </tr>
-                            </div>
-                            {this.state.coupons.map(function(d, idx){
-                                return (
-                                    <div>
-                                    <tr key={idx + 1}>
-                                        <td><img src ={d.logo} class="userbrandlogo"/></td>
-                                        <td>{idx + 1}</td>
-                                        <td>{d.issue_date.slice(0,-14)}</td>
-                                        <td>${d.amount}</td>
-                                        <td>{d.expiry_date}</td>
-                                        <td><Barcode value={d.barcode} height={35}/></td>
-                                    </tr>
-                                    </div>
-                                )})}
-                        </table>
+                        <UserCoupons coupons={this.state.coupons}/>
                     </div>
                 </div>
             </div>
