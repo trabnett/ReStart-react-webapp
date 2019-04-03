@@ -19,7 +19,7 @@ class ConfirmBrand extends Component{
                     user: {
                         first_name: "",
                         last_name: "",
-                        email: "",
+                        email: " ",
                         postcode: "",
                         points: 0,
                         coupons: [],
