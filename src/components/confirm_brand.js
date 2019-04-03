@@ -69,7 +69,7 @@ class ConfirmBrand extends Component{
         let data = {}
         let url = ""
         if (this.state.user === null){
-          url = 'http://localhost:3000/brands'
+          url = 'https://restart-recycling.herokuapp.com/brands'
           data = {
             brand_name: this.state.brand.brand_name,
             brand_id: this.state.brand.brand_id,

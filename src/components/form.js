@@ -51,7 +51,7 @@ import './../styles/brand.css';
                   Accept: 'application/json',
                   "Content-Type": "application/json"
               }
-              fetch('http://localhost:3000/brands/coupons', {
+              fetch('https://restart-recycling.herokuapp.com/brands/coupons', {
                   method: 'POST',
                   headers: headers,
                   body: JSON.stringify(data)

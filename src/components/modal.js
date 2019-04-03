@@ -31,7 +31,8 @@ class Modal extends Component {
       register_brand: false,
       register_user: false,
       user: "Brand",
-      brand: "User"
+      brand: "User",
+      counter: 0
 
     }
 
@@ -79,9 +80,9 @@ class Modal extends Component {
     event.preventDefault();
     let url = ""
     if (this.state.user === "Brand"){
-      url = 'http://localhost:3000/brands'
+      url = 'https://restart-recycling.herokuapp.com/brands'
     } else {
-      url = 'http://localhost:3000/users'
+      url = 'https://restart-recycling.herokuapp.com/users'
     }
     let data = {
       email: this.state.signup_email,
@@ -115,6 +116,15 @@ class Modal extends Component {
       this.setState({register_user: true})
     } else if (data.exception === "#<ActiveRecord::RecordInvalid: Validation failed: Email has already been taken>"){
       alert("That email is already taken")
+      this.setState({
+        email:'',
+        password:'',
+        signup_email: '',
+        signup_password: '',
+        password_confirmation: ''
+      }, () => {
+        let refresh = this.state.counter + 1
+        this.setState({counter: refresh})})
     } else {
       alert("Please make sure all fields are filled out")
     }
@@ -126,9 +136,9 @@ class Modal extends Component {
     event.preventDefault();
     let url = ""
     if (this.state.user === "Brand") {
-      url = 'http://localhost:3000/brands/login'
+      url = 'https://restart-recycling.herokuapp.com/brands/login'
     } else {
-      url = "http://localhost:3000/login"
+      url = "https://restart-recycling.herokuapp.com/login"
     }
     let data = {
       email: this.state.email,
@@ -171,6 +181,15 @@ class Modal extends Component {
         this.setState({redirect: true})
       } else {
         alert("Please register or login with one of our preregistered brands:\nemail: starbucks@starbucks.com password: asdf\nemail: dasani@dasani.com password: asdf\nemail: coke@coke.com password: asdf\nemail: drpepper@drpepper.com password: asdf\nemail: chiquita@chipuita.com password: asdf\nemail: nestle@nestle.com password: asdf\nemail: lighthouselabs@lighthouselabs.com password: asdf\nemail: duracell@duracell.com password: asdf")
+        this.setState({
+          email:'',
+          password:'',
+          signup_email: '',
+          signup_password: '',
+          password_confirmation: ''
+        }, () => {
+          let refresh = this.state.counter + 1
+          this.setState({counter: refresh})})
       }
     } )
   }

@@ -77,7 +77,7 @@ class Confirm extends Component{
         let data = {}
         let url = ""
         if (this.state.brand === null){
-          url = `http://localhost:3000/users/${this.state.user.session_id}`
+          url = `https://restart-recycling.herokuapp.com/users/${this.state.user.session_id}`
           data = {
             email: this.state.user.email,
             first_name: this.state.user.first_name,
@@ -85,7 +85,7 @@ class Confirm extends Component{
             postcode: this.state.user.postcode
           }
         } else {
-          url = 'http://localhost:3000/users'
+          url = 'https://restart-recycling.herokuapp.com/users'
           data = {
             brand_name: "",
             brand_id: null,
