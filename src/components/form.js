@@ -44,7 +44,7 @@ import './../styles/brand.css';
           brand_name: this.props.brand_name,
           code: code
           }, ()=> {
-              console.log(this.state)
+              console.log(this.state, "<=======++++++++++=")
               let data = {...this.state}
               console.log(data)
               let headers = {
@@ -58,6 +58,7 @@ import './../styles/brand.css';
               })
               .then(response => response.json())
               .then(data => {
+                console.log("hello", data)
                 this.props.AddNewCoupon(data.new_coupon)
                 this.setState({
                   expiry_date: "yyyy-MM-dd",

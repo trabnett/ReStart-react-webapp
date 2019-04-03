@@ -68,7 +68,7 @@ class Brands extends Component{
                         <Graph/>
                     </div>
                     <div className="brandcolumn">    
-                        <Form brand_name={this.state.brand} AddNewCoupon={this.AddNewCoupon}/>	 
+                        <Form brand_name={this.state.brand_name} AddNewCoupon={this.AddNewCoupon}/>	 
                     </div>
                 </div>
             </div>
