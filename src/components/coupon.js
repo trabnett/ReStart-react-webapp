@@ -25,28 +25,28 @@ class Coupon extends Component{
             }
                
             return (
-                 <div>
-                <h2>{this.props.data.brand}</h2>
                 <div>
-												<table>
-													<tr>
-														<th>Coupon #</th>
-    												<th>Date Created</th>
-    												<th>Value</th>
-														<th>Expiry Date</th>
-														<th>Coupon ID</th>
-													</tr>
-													{this.props.data.coupons.map(function(d, idx){
-                        return (
-													<tr key={idx + 1}>
-                          <td>{idx + 1}</td>
-                          <td>{d.created_at.slice(0,-14)}</td>
-                          <td>${d.value}</td>
-                          <td>{d.expiary_date}</td>
-                          <td><Barcode value={d.code} height={35}/></td>
-                      </tr>
-											)})}
-											</table>
+                    <h2>{this.props.data.first_name}</h2>
+                <div>
+					<table>
+                        <tr>
+                            <th>Coupon #</th>
+                            <th>Date Created</th>
+                            <th>Value</th>
+                            <th>Expiry Date</th>
+                            <th>Coupon ID</th>
+                        </tr>
+                        {this.props.data.coupons.map(function(d, idx){
+                            return (
+                                <tr key={idx + 1}>
+                                    <td>{idx + 1}</td>
+                                    <td>{d.created_at.slice(0,-14)}</td>
+                                    <td>${d.value}</td>
+                                    <td>{d.expiary_date}</td>
+                                    <td><Barcode value={d.code} height={35}/></td>
+                                </tr>
+                            )})}
+					</table>
                 </div>
             </div>
         )

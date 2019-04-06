@@ -61,3 +61,13 @@ td {
 .restartResize {
 	max-height: 5em;
 }
+.userbrandlogo{
+	max-height: 4em;
+	max-width: 4em;
+	margin: 2em;
+	box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+}
+.confirm_form {
+	text-align: center;
+	
+}
