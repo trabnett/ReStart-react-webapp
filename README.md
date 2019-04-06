@@ -2,7 +2,7 @@ Web App for ReStart recycling app.
 
 Project by tim rabnett (github: trabnett), Lucas Cruz (github:  PointCodeZero) and Hilary Watson (github: Hilwat)
 
-The Wep App is hosted on Heroku at (hosted for free, so please allow a minuite for app to wake up):
+The Wep App is hosted on Heroku at:
 
 https://restart-web.herokuapp.com/
 
