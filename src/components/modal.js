@@ -234,7 +234,7 @@ class Modal extends Component {
             <a className="close" onClick={close}>
               &times;
             </a>
-            <div className="popupname"> Log In or Sign Up as a {this.state.user} or click here as a  <button onClick={this.toggleUser}>{this.state.brand}</button></div>
+            <div className="popupname"> Log In or Sign Up as a {this.state.user} or click here to continue as a  <button className="btn2 btn2--green btn2--animated" onClick={this.toggleUser}>{this.state.brand}</button></div>
             <div className="content">
               {' '}
               ReStart offers rewards for recycling with the help of cities, brands and public we can all be planet heros.

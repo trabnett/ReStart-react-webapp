@@ -153,7 +153,7 @@ class Confirm extends Component{
                     <button className="btn2 logout" onClick={this.LogOut}>Log out</button>
                 </div>
                 <div className="brandcolumn">
-                    <h1 className="confirm_form">Hello {this.state.user.first_name}. Welcom to ReStart</h1>
+                    <h1 className="confirm_form">Hello {this.state.user.first_name}. Welcome to ReStart</h1>
                     <div className="confirm_form">
                         <form className='react-form' onSubmit={this.handleSubmit}>
                             <h3>Please enter your data to create your account</h3>

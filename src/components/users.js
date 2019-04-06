@@ -37,7 +37,7 @@ class Users extends Component{
                     <source srcSet={white_logo_restart}></source>
                     <img alt="Full logo" src="images/white_logo_restart.png" className="restartResize"></img>
                     </picture>   
-                    <h1>Welcom to ReStart: {this.state.first_name}</h1>
+                    <h1>Welcome to ReStart: {this.state.first_name}</h1>
                     <button className="btn2 logout" onClick={this.LogOut}>Log out</button>
                 </div>
                 <div className="brandrow">
